@@ -14,7 +14,7 @@ export default function PokemonCards(){
     const handleClick = () => {
       setNum(randomNumberFunction());
       setShow(true)
-      
+      setFilteredPokemon(null)
     }
 
     const handleChange = () => {
