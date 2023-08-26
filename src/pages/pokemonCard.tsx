@@ -1,4 +1,5 @@
 import { useContext, useRef, useState } from "react";
+import ReactCardFlip from "react-card-flip";
 import { IPokemon, PokemonContext} from "../providers/pokemonContex/pokemonContex";
 import randomNumberFunction from "../utils/randomNumberFunction";
 
@@ -13,6 +14,7 @@ export default function PokemonCards(){
     const handleClick = () => {
       setNum(randomNumberFunction());
       setShow(true)
+      
     }
 
     const handleChange = () => {
@@ -22,15 +24,20 @@ export default function PokemonCards(){
           if (pokemon.name?.includes(search.charAt(0).toUpperCase())){
             setFilteredPokemon(pokemon)
             setShow(true)
-            console.log(pokemon)
           }}
           
       })}      
 
     return(
-      <section>
-        {show ?( filteredPokemon? 
-          ((<section className="middleComponents">
+      <section className="middleComponents">
+
+        <ReactCardFlip isFlipped={show} flipDirection="vertical">
+        <section>
+            <img alt="Pokebola" src="https://pokemon-cards-viewer.netlify.app/images/backCover.png" style={{width:100}}/>
+        </section>
+
+        {show &&( filteredPokemon? 
+          ((<section className="pokemonComponents">
            <section className="card">
               <div className="cardImg">
                 <div className={`bacgroundImg + ${filteredPokemon.category}`}>
@@ -42,7 +49,8 @@ export default function PokemonCards(){
                 <p>{filteredPokemon.category}</p>
               </div>
             </section>
-        </section>)):((<section className="middleComponents">
+        </section>
+        )):((<section className="pokemonComponents">
            <section className="card">
               <div className="cardImg">
                 <div className={`bacgroundImg + ${pokemonList![num].category}`}>
@@ -54,7 +62,11 @@ export default function PokemonCards(){
                 <p>{pokemonList![num].category}</p>
               </div>
             </section>
-        </section>))):(<img alt="Pokebola" src="https://pokemon-cards-viewer.netlify.app/images/backCover.png" style={{width:100}}/>)}
+        </section>)))
+          }
+        </ReactCardFlip>
+        
+        
           <button  onClick={() => {
             getPokemons();
             handleClick();
