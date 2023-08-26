@@ -9,31 +9,29 @@ interface PokemonProps {
 
 interface PokemonProviderData{
     getPokemons: () => void;
-    pokemonList: IPokemonList|null;  
-    
+    pokemonList: IPokemon[] | null;
 }
 
-interface IPokemonList {
-    data?: IPokemon[];
-}
-
-interface IPokemon {
+export interface IPokemon {
     id?: string;
+    name?: string;
     category?: string;
-    img_url?: string;
-    bc_img_url?: string;
+    image_url?: string;
+    background_image_url?: string;
     created_at?: string;
 }
 
 function PokemonProvider(props: PokemonProps){
-    const [pokemonList, setPokemonList] = useState<IPokemonList | null>(null);
-       
+    const [pokemonList, setPokemonList] = useState<IPokemon[] | null>(null);
+    const [filteredPokemon, setFilteredPokemon] = useState<IPokemon |null>(null)
+
      const getPokemons = async () => {
         await api.catch().then((res) => {
-            setPokemonList(res.data)
-            })
+          setPokemonList(res.data)
+          })
         }
-     
+ 
+
     return(
         <PokemonContext.Provider value={{pokemonList, getPokemons}}>{props.children}</PokemonContext.Provider>
     )

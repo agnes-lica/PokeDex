@@ -1,18 +1,68 @@
-import { useContext } from "react";
-import { PokemonContext } from "../providers/pokemonContex/pokemonContex";
+import { useContext, useRef, useState } from "react";
+import { IPokemon, PokemonContext} from "../providers/pokemonContex/pokemonContex";
+import randomNumberFunction from "../utils/randomNumberFunction";
 
-function PokemonCards(){
-    const {pokemonList, getPokemons} = useContext(PokemonContext)
-    
-    
-    return(<button
-        onClick={() => {
-            getPokemons()
-          console.log(pokemonList)
-        }}
-      >
-        Meus envios
-      </button>)
-}
+export default function PokemonCards(){
+    const [num, setNum] = useState(0);
+    const [show, setShow] = useState(false);
+    const [filteredPokemon, setFilteredPokemon] = useState<IPokemon |null>(null)
+    const {pokemonList, getPokemons} = useContext(PokemonContext)  
+    const inputRef = useRef<HTMLInputElement>(null)
 
-export default PokemonCards;
+    getPokemons();
+    const handleClick = () => {
+      setNum(randomNumberFunction());
+      setShow(true)
+    }
+
+    const handleChange = () => {
+      const search = inputRef.current?.value
+      pokemonList?.filter((pokemon) => {
+        if(search){
+          if (pokemon.name?.includes(search.charAt(0).toUpperCase())){
+            setFilteredPokemon(pokemon)
+            setShow(true)
+            console.log(pokemon)
+          }}
+          
+      })}      
+
+    return(
+      <section>
+        {show ?( filteredPokemon? 
+          ((<section className="middleComponents">
+           <section className="card">
+              <div className="cardImg">
+                <div className={`bacgroundImg + ${filteredPokemon.category}`}>
+                  <img className="pokemonImg" alt={`${filteredPokemon.name} + gif`} src={`${filteredPokemon.image_url}`}/>
+                </div>
+              </div>
+              <div className="info">
+                <p>{filteredPokemon.name}</p>
+                <p>{filteredPokemon.category}</p>
+              </div>
+            </section>
+        </section>)):((<section className="middleComponents">
+           <section className="card">
+              <div className="cardImg">
+                <div className={`bacgroundImg + ${pokemonList![num].category}`}>
+                  <img className="pokemonImg" alt={`${pokemonList![num].name} + gif`} src={`${pokemonList![num].image_url}`}/>
+                </div>
+              </div>
+              <div className="info">
+                <p>{pokemonList![num].name}</p>
+                <p>{pokemonList![num].category}</p>
+              </div>
+            </section>
+        </section>))):(<img alt="Pokebola" src="https://pokemon-cards-viewer.netlify.app/images/backCover.png" style={{width:100}}/>)}
+          <button  onClick={() => {
+            getPokemons();
+            handleClick();
+            }}>Gerar carta</button>
+          <form>
+            <input placeholder="Procure por nome ou tipo" ref={inputRef} type="text"></input>
+            <button onClick={handleChange} type="button">buscar</button>
+          </form>
+      </section>
+    )
+    }
