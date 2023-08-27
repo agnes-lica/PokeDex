@@ -1,0 +1,121 @@
+.middleComponents{
+    background-color:var(--primary-color);
+    max-width: 15rem;
+    height: fit-content;
+    padding: 1rem;
+    border-radius: 6px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.backCardSection{
+    width: 200px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+.backCard{
+    width: 200px !important;
+    margin-bottom: 0.3rem;
+}
+
+button{
+    margin: 0;
+    padding: 0.3rem;
+    background-color: var(--third-color);
+    color: var(--primary-color);
+    font-weight: 500;
+    border: none;    
+    border-radius: 3px;
+}
+
+.searchButton{
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+form{
+    margin-top: 0.5rem;
+}
+
+input{
+    border: 2px solid var(--third-color);
+    padding: 0.2rem;
+}
+
+.pokemonComponents{
+    border: solid var(--card-border-color) 5px;
+    border-radius: 8px;
+    width: 174px;
+    height: 244px;
+    padding: 6px;
+    margin-bottom: 0.3rem;
+}
+
+.info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    margin-top: 0.3rem;
+    font-weight: 600;
+}
+
+.backgroundImg{
+    height: 180px;
+    border-radius: 6px;
+    border: 2px solid var(--card-border-color);
+
+    background-size: 15rem;
+    background-position: -20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pokemonImg{
+    min-width: 50px;
+}
+
+.cardIce{
+    background: var(--card-background-ice);
+}
+
+.cardGrass{
+    background: var(--card-background-grass);
+}
+
+.cardPsychic{
+    background: var(--card-background-psychic);
+}
+
+.cardFire{
+    background: var(--card-background-fire);
+}
+
+.cardWater{
+    background: var(--card-background-water);
+}
+
+.cardBug{
+    background: var(--card-background-bug);
+}
+
+.cardElectric{
+    background: var(--card-background-electric);
+}
+
+.cardRock{
+    background: var(--card-background-rock);
+}
+
+.cardNormal{
+    background: var(--card-background-normal);
+}
+
+.cardGround{
+    background: var(--card-background-ground);
+}
