@@ -59,7 +59,7 @@ yarn start
 
 ## Link do deploy
 
-- [PokeDex](https://aindanaoexiste/)
+- [PokeDex]([https://aindanaoexiste/](https://poke-dex-black.vercel.app))
 
 ## Links da API e Documentação
 
