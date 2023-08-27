@@ -1,46 +1,74 @@
-# Getting Started with Create React App
+# PokeDex desafio Mandabem da Makasí
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+O desafio tem como objetivo a criação de uma aplicação que consome uma API de pokemon e gera aleatóriamente um pokemon por vez na tela.
 
-## Available Scripts
+Para a aplicação foi utilizado a API propria da **Makasí**.
 
-In the project directory, you can run:
+## Tecnologias utilizadas
 
-### `yarn start`
+**_JavaScript | Typescript | Axios | React | Vercel | Yarn | Node.js_**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Motivação para escolha das tecnologias
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+A escolha dessas tecnologias se deu por conta da facilidade de criação de uma aplicação _single page_ com chamada básica de API.
 
-### `yarn test`
+O **Typescript** foi utilizado para uma melhor performace do desenvolvedor durante a criação e manutenção do código.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+O **Axios** foi escolhido pois ele fornece uma camada de simplificação para requisições e tratamento de erros.
 
-### `yarn build`
+## Funcionalidade
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+A aplicação contém apenas uma página, nela são apresentados dois botões **Gerar Carta** ou **Buscar**. A primeira gera um pokemon aleatório na tela, já a segunda lhe permite fazer uma busca por nome de pokemon no input.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Executando o projeto
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Clone esse repositório em seu computador:
 
-### `yarn eject`
+```bash
+git clone git@github.com:agnes-lica/PokeDex.git
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Vá até a pasta do projeto pelo terminal:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+cd PokeDex
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Instale as dependências do projeto:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```bash
+yarn
+```
 
-## Learn More
+Inicie o servidor:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+yarn start
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Estrutura do projeto
+
+- **public/**: Aqui ficam algumas imagens utilizadas na aplicação
+- **src/**: Aqui ficam todos os arquivos da aplicação
+- **src/pages**: Nessa pasta fica o arquivo da página do projeto;
+- **src/providers**: Nessa pasta fica todos os arquivos de contexto da aplicação;
+    - **src/providers/pokemonContext**: aqui fica os arquivos de contexto apenas para requisição dos pokemons na API.
+- **src/routes**: Nessa pasta fica o arquivo de rotas do projeto;
+- **src/services**: Aqui ficam os arquivos que definem a url para requisições da API;
+- **src/utils**: Aqui ficam arquivos para códigos uteis, como o de geração de número aleatório.
+
+## Link do deploy
+
+- [PokeDex](https://aindanaoexiste/)
+
+## Links da API e Documentação
+
+- API de Pokemon: https://dev-api-teste.mandarin.com.br/pokemons
+- Documentação: https://pokemon.mandarin.com.br
+
+## Contato
+
+Para entrar em contato comigo me mande um e-mail ou uma mensagem nas redes sociais:
+
+- LinkedIn: https://www.linkedin.com/in/agnesmr/
+- E-mail: agnes.lica@gmail.com
