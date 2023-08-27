@@ -74,7 +74,7 @@ export default function PokemonCards(){
             handleClick();
             }}>Gerar carta</button>
           <form>
-            <input placeholder="Procure por nome ou tipo" ref={inputRef} type="text"></input>
+            <input placeholder="Procure por nome" ref={inputRef} type="text"></input>
             <button className="searchButton" onClick={handleChange} type="button">buscar</button>
           </form>
       </section>
