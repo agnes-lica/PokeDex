@@ -2,6 +2,8 @@ import { useContext, useRef, useState } from "react";
 import ReactCardFlip from "react-card-flip";
 import { IPokemon, PokemonContext} from "../providers/pokemonContex/pokemonContex";
 import randomNumberFunction from "../utils/randomNumberFunction";
+import "./style.css";
+import { url } from "inspector";
 
 export default function PokemonCards(){
     const [num, setNum] = useState(0);
@@ -32,16 +34,16 @@ export default function PokemonCards(){
       <section className="middleComponents">
 
         <ReactCardFlip isFlipped={show} flipDirection="vertical">
-        <section>
-            <img alt="Pokebola" src="https://pokemon-cards-viewer.netlify.app/images/backCover.png" style={{width:100}}/>
+        <section className="backCardSection">
+            <img className="backCard" alt="Pokebola" src="https://pokemon-cards-viewer.netlify.app/images/backCover.png" style={{width:100}}/>
         </section>
 
         {show &&( filteredPokemon? 
-          ((<section className="pokemonComponents">
-           <section className="card">
+          ((<section className={`pokemonComponents card${filteredPokemon.category}`}>
+           <section>
               <div className="cardImg">
-                <div className={`bacgroundImg + ${filteredPokemon.category}`}>
-                  <img className="pokemonImg" alt={`${filteredPokemon.name} + gif`} src={`${filteredPokemon.image_url}`}/>
+                <div className="backgroundImg" style={{backgroundImage:`url(${filteredPokemon.background_image_url})`}}>
+                  <img className={`pokemonImg ${filteredPokemon.name}Img`} alt={`${filteredPokemon.name}` + "gif"} src={`${filteredPokemon.image_url}`}/>
                 </div>
               </div>
               <div className="info">
@@ -50,11 +52,11 @@ export default function PokemonCards(){
               </div>
             </section>
         </section>
-        )):((<section className="pokemonComponents">
-           <section className="card">
+        )):((<section className={`pokemonComponents card${pokemonList![num].category}`}>
+           <section>
               <div className="cardImg">
-                <div className={`bacgroundImg + ${pokemonList![num].category}`}>
-                  <img className="pokemonImg" alt={`${pokemonList![num].name} + gif`} src={`${pokemonList![num].image_url}`}/>
+                <div className="backgroundImg" style={{backgroundImage:`url(${pokemonList![num].background_image_url})`}}>
+                  <img className={`pokemonImg ${pokemonList![num].name}Img`} alt={`${pokemonList![num].name}` + "gif"} src={`${pokemonList![num].image_url}`}/>
                 </div>
               </div>
               <div className="info">
@@ -73,7 +75,7 @@ export default function PokemonCards(){
             }}>Gerar carta</button>
           <form>
             <input placeholder="Procure por nome ou tipo" ref={inputRef} type="text"></input>
-            <button onClick={handleChange} type="button">buscar</button>
+            <button className="searchButton" onClick={handleChange} type="button">buscar</button>
           </form>
       </section>
     )
